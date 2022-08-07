@@ -1,0 +1,129 @@
+// import Table from "react-bootstrap/Table";
+// import Button from "react-bootstrap/Button";
+// import { useNavigate } from "react-router-dom";
+
+// function AllUser(props) {
+//   // console.log(props.data);
+
+//   let navigate = useNavigate();
+
+//   let handDelete = (i) => {
+//     let arr = props.data.user;
+//     arr.splice(i, 1);
+//     console.log(arr);
+//     props.data.setUser(arr); // again render it then only delete in dom
+//   };
+//   return (
+//     <Table striped bordered hover>
+//       <thead>
+//         <tr>
+//           <th>id</th>
+//           <th>Name</th>
+//           <th>Email</th>
+//           <th>Mobile</th>
+//           <th>Batch</th>
+//           <th>Action</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         {props.data.user.map((e, i) => {
+//           return (
+//             <>
+//               <tr key={i}>
+//                 <td>{i + 1}</td>
+//                 <td> {e.name}</td>
+//                 <td> {e.email}</td>
+//                 <td> {e.mobile}</td>
+//                 <td> {e.batch}</td>
+//                 <td>
+//                   <Button
+//                     variant="outline-primary"
+//                     style={{ marginRight: "10px" }}
+//                     onClick={() => navigate("/edit/" + i)}
+//                   >
+//                     Edit
+//                   </Button>
+
+//                   <Button variant="outline-danger" onClick={handDelete}>
+//                     Delete
+//                   </Button>
+//                 </td>
+//               </tr>
+//             </>
+//           );
+//         })}
+//       </tbody>
+//     </Table>
+//   );
+// }
+
+// export default AllUser;
+
+// import React, { useState } from "react";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
+
+function AllStudents(props) {
+  // console.log(props.data);
+  // let [stu, setStu] = useState(props.data.students);
+
+  let navigate = useNavigate();
+  let handleDelete = (i) => {
+    let arr = [...props.data.students];
+    arr.splice(i, 1);
+    // console.log(arr);
+    props.data.setStudents(arr); //this is an issue component is not renderring because of shallow copy , thats why we need to update state again to  remove data in dom
+  };
+  return (
+    <>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Batch</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.data.students.map((e, i) => {
+            return (
+              <tr key={i}>
+                <td>{i + 1}</td>
+                <td>{e.name}</td>
+                <td>{e.email}</td>
+                <td>{e.mobile}</td>
+                <td>{e.batch}</td>
+                <td>
+                  {e.status ? (
+                    <p style={{ color: "green" }}>Active</p>
+                  ) : (
+                    <p style={{ color: "red" }}>Inactive</p>
+                  )}
+                </td>
+                <td>
+                  <Button
+                    variant="primary"
+                    onClick={() => navigate("/edit-user/" + i)}
+                  >
+                    Edit
+                  </Button>
+                  &nbsp; &nbsp;
+                  <Button variant="danger" onClick={() => handleDelete(i)}>
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </>
+  );
+}
+
+export default AllStudents;
