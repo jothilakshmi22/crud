@@ -5,7 +5,7 @@ import "./polymer.css";
 function NavBar() {
   return (
     <div>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark rounded-2 position-absolute ms-lg-4 ms-md-3 ms-2 ">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded-2 position-absolute ms-lg-4 ms-md-3 ms-2 ">
         <div class="container-fluid">
           <Link to="/">
             <a class="navbar-brand fw-bold" href="#">
@@ -63,7 +63,7 @@ function NavBar() {
                 </a>
                 <ul
                   class="dropdown-menu bg-dark"
-                  aria-labelledby="navbarDropdown  "
+                  aria-labelledby="navbarDropdown"
                 >
                   <li>
                     <a class="dropdown-item text-white" href="#">

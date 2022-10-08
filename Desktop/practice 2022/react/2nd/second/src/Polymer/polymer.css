@@ -154,7 +154,8 @@ nav {
 }
 .grids {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 .card-widths {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

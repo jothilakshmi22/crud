@@ -83,7 +83,11 @@ const BlogData = () => {
   };
   return (
     <>
-      <div className="grids overflow-auto">{Datas.map(renderCard)}</div>
+      <div className="ms-sm-5">
+        <div className="grids ms-sm-5 ms-0 ms-md-0">
+          {Datas.map(renderCard)}
+        </div>
+      </div>
     </>
   );
 };
